@@ -1,0 +1,36 @@
+{
+  "name": "message",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=production node -r esm ./src/bin/www",
+    "dev": "nodemon",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint --ext .js ./src",
+    "format": "prettier --write 'src/**/*.+(js|json)'"
+  },
+  "dependencies": {
+    "@ringcentral/sdk": "^4.0.0",
+    "esm": "^3.2.25",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jest": "^25.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.7",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.+(js|json)": "prettier --write"
+  }
+}
